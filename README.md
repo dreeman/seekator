@@ -13,12 +13,12 @@ Seekator is a simple online tool to trim and save/download video from YouTube.
     $ docker-compose up -d --build
 
     # Run migrates with seeds
-    $ docker-compose exec php artisan migrate --seed
+    $ docker-compose exec php php artisan migrate --seed
 
     # Start Websockets server
-    $ docker-compose exec php artisan websockets:serve
+    $ docker-compose exec php php artisan websockets:serve
 
-    # Run node watch (or build) command
+    # Run nodejs watch (or build) command
     $ docker-compose exec nodejs npm run watch
 
     # Open application in your browser 
