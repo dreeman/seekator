@@ -1,4 +1,4 @@
-![Seekator](https://github.com/dreeman/seekator/blob/main/image.png?raw=true)
+![Seekator](https://raw.githubusercontent.com/dreeman/seekator/main/image.png)
 
 ## Seekator 0.1.0
 
