@@ -36,4 +36,4 @@ Seekator is a simple online tool to trim and save/download video from YouTube.
 - VueJS 2
 - Websockets (Pusher)
 - Docker
-- youtube-dl with Python in Docker container
+- youtube-dl (with Python) and FFMPEG in Docker container
