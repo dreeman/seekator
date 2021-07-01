@@ -1,0 +1,18 @@
+FROM php:7.4-fpm
+
+ADD ./php/php7.ini /usr/local/etc/php/conf.d/php7.ini
+
+RUN apt-get update -y \
+    && apt-get install -y libmcrypt-dev libzip-dev zip ffmpeg python \
+    && pecl install mcrypt-1.0.3 \
+    && docker-php-ext-enable mcrypt \
+    && docker-php-ext-install pdo_mysql zip bcmath
+
+RUN curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl \
+    && chmod a+rx /usr/local/bin/youtube-dl \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
+USER 1000:1000
+
+WORKDIR /var/www

@@ -1,0 +1,43 @@
+version: '3'
+services:
+    nginx:
+        build:
+            context: ./docker
+            dockerfile: nginx.docker
+        volumes:
+            - ./:/var/www
+        ports:
+            - 80:80
+            - 8080:8080
+
+    php:
+        build:
+            context: ./docker
+            dockerfile: php7-fpm.docker
+        volumes:
+            - ./:/var/www
+        ports:
+            - 6001:6001
+
+    database:
+        image: mariadb
+        volumes:
+            - ./docker/data:/var/lib/mysql
+        restart: always
+        ports:
+            - 3306:3306
+        environment:
+            - "MYSQL_ROOT_PASSWORD=root"
+
+    nodejs:
+        image: node:12.22.1-alpine
+        volumes:
+            - ./:/var/www
+        working_dir: /var/www
+        tty: true
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8888:8080
