@@ -1,8 +1,6 @@
 #!/bin/bash
 cp .env.example .env
 sudo docker-compose up -d --build
-echo "Wait for 10 sec..."
-sleep 10
 docker-compose exec database mysql -uroot -proot -e "create database seekator"
 docker-compose exec php composer install
 docker-compose exec php php artisan migrate:fresh --seed
